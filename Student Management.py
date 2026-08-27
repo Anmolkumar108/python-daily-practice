@@ -46,27 +46,27 @@ else:
     exit()
 
 
-# Sirf student ka naam
+# Only Student Name
 if "name" in choice and "student" in choice:
     print("Name:", student["name"])
 
-# Sirf age
+# Only age
 elif "age" in choice:
     print("Age:", student["age"])
 
-# Sirf course
+# Only course
 elif "course" in choice:
     print("Course:", student["course"])
 
-# Sirf college
+# Only college
 elif "college" in choice or "collage" in choice:
     print("College:", student["college"])
 
-# Sirf CGPA
+# Only CGPA
 elif "cgpa" in choice or "sgpa" in choice:
     print("CGPA/SGPA:", student["cgpa"])
 
-# Agar sirf student1/student2/student3 likha
+
 else:
     print("\n--- Student Information ---")
     print("Name:", student["name"])
