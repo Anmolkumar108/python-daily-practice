@@ -1,0 +1,39 @@
+students = [
+    {"name": "Anmol", "marks": 85},
+    {"name": "Rahul", "marks": 72},
+    {"name": "Aman", "marks": 91},
+    {"name": "Ravi", "marks": 68}
+]
+
+print("--- 1. Student Names ---")
+for student in students:
+    print(student["name"])
+
+
+print("\n--- 2. Student Marks ---")
+for student in students:
+    print(f"{student['name']}: {student['marks']}")
+
+
+highest_student = students[0]
+for student in students:
+    if student["marks"] > highest_student["marks"]:
+        highest_student = student
+
+print("\n--- 3. Highest Marks ---")
+print(f"Topper: {highest_student['name']} with {highest_student['marks']} marks")
+
+total_marks = 0
+for student in students:
+    total_marks += student["marks"]
+
+average_marks = total_marks / len(students)
+
+print("\n--- 4. Average Marks ---")
+print(f"Average Marks: {average_marks}")
+
+
+print("\n--- 5. Students with Marks > 75 ---")
+for student in students:
+    if student["marks"] > 75:
+        print(f"{student['name']} ({student['marks']})")
