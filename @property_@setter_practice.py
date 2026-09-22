@@ -16,9 +16,12 @@ class BankAccount:
     def balance(self):
         return self.__balance
     
-    @balance.setter
-    def balance(self, value):
-         self.__balance = value
+    @balance.setter 
+    def balance(self, value): 
+        if value >= 0: 
+            self.__balance = value 
+        else: 
+            print("Invalid Balance") 
 
 
 BankAccount1 = BankAccount("Anmol Singh", 60000)
