@@ -30,4 +30,3 @@ child1.show_father()
 print()
 child1.show_mother()
 
-        
