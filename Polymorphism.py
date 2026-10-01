@@ -1,21 +1,24 @@
+def notify(notification, message): 
+    notification.send(message) 
 
+class EmailNotification: 
+    def send(self, message):
+        print(f"Email sent: {message}") 
 
+class SMSNotification: 
+    def send(self, message): 
+        print(f"SMS sent: {message}") 
 
-def start_vehicle(vehicle):
-    vehicle.move()
-class Car:
-     def move(self):
-          print("Car is moving")
-class Bike:
-     def move(self):
-          print("Bike is moving")
-class Bus:
-     def  move(Self):
-          print("Bus is moving")
-car = Car()
-bike = Bike()
-bus = Bus()
+class WhatsAppNotification: 
+    def send(self, message): 
+        print(f"WhatsApp message sent: {message}") 
 
-start_vehicle(car)
-start_vehicle(bike)
-start_vehicle(bus)
+emailNotification = EmailNotification() 
+smsnotification = SMSNotification() 
+whatsAppNotification = WhatsAppNotification() 
+
+msg = "Hello Anmol"
+
+notify(emailNotification, msg) 
+notify(smsnotification, msg) 
+notify(whatsAppNotification, msg)
