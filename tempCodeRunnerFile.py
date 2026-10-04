@@ -1,1 +1,0 @@
-ankPayment.process_payment(self)
