@@ -13,6 +13,10 @@ class Product:
         self.stock = stock
 
     @property
+    def product_id(self):
+        return self._product_id
+
+    @property
     def name(self):
         return self._name
 
