@@ -6,6 +6,24 @@ from models.user import User, Customer, Admin
 from models.product import Product
 from models.order_item import OrderItem
 from models.cart import ShoppingCart
+from services.inventory_service import InventoryService
+from exceptions import InsufficientStockError
+from services.notification_service import (
+    NotificationManager,
+    EmailNotification,
+    SMSNotification,
+    WhatsAppNotification
+)
+
+from payments.upi import UPIPayment
+from payments.card import CardPayment
+from payments.cash_on_delivery import CashOnDelivery
+
+payments = [
+    UPIPayment(),
+    CardPayment(),
+    CashOnDelivery()
+]
 
 # ==========================================
 # 1. USER, CUSTOMER AND ADMIN TESTING
@@ -125,3 +143,45 @@ def test_shopping_cart():
 
 if __name__ == "__main__":
     test_shopping_cart()
+
+
+# ==========================================
+# 4. Inventory Service TESTING
+# ==========================================
+
+product = Product("P101", "Keyboard", 800, 10)
+
+# Stock check
+print(InventoryService.check_stock(product, 3))
+
+# Stock reserve
+InventoryService.reserve_stock(product, 3)
+print("Stock after reservation:", product.stock)
+
+# Stock release
+InventoryService.release_stock(product, 3)
+print("Stock after release:", product.stock)
+
+# Insufficient stock test
+try:
+    InventoryService.reserve_stock(product, 15)
+except InsufficientStockError as error:
+    print(error)
+print()
+# ==========================================
+# 4. Notification Service TESTING
+# ==========================================
+manager = NotificationManager()
+
+manager.add_service(EmailNotification())
+manager.add_service(SMSNotification())
+manager.add_service(WhatsAppNotification())
+
+manager.send_notification("Your order has been placed successfully!")
+
+# ==========================================
+# 4. Payment TESTING
+# ==========================================
+print("==== Payment ===")
+for payment in payments:
+    payment.pay(1500)
